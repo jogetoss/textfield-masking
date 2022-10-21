@@ -1,6 +1,9 @@
 # Description
 
-This repository is meant to serve as a general template for how to set up new repositories in the JogetOSS organization. 
+Text Field Masking - Mainly used for validation purpose for e.g Phone number, Local ID, Passport, etc
+
+![screenshot](https://user-images.githubusercontent.com/70784722/197221880-f724cefd-0693-4f57-b00a-390d75146e81.png)
+
 
 # Getting Help
 
