@@ -1,9 +1,16 @@
 # Description
 
-Text Field Masking - Mainly used for validation purpose for e.g Phone number, Local ID, Passport, etc
+Text Field Masking plugin extends the default Text Field to provide masking when entering numbers e.g Phone number, Local ID, Passport, etc
 
 ![screenshot](https://user-images.githubusercontent.com/70784722/197221880-f724cefd-0693-4f57-b00a-390d75146e81.png)
 
+<img width="889" alt="config" src="https://user-images.githubusercontent.com/70784722/197327911-62bca8b4-2452-400a-a4bc-0d0e0b488a2d.png">
+
+When using the plugin, please configure "Placeholder" and "Slots" accordingly.
+
+Symbol(s) in "slots" would be replaced with actual user input. 
+
+Credit to https://stackoverflow.com/a/55010378 for the Javascript code in implementing text masking.
 
 # Getting Help
 
