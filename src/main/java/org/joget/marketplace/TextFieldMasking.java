@@ -17,7 +17,7 @@ public class TextFieldMasking extends TextField {
 
     @Override
     public String getVersion() {
-        return "7.0.0";
+        return "7.0.1";
     }
 
     @Override
@@ -27,8 +27,6 @@ public class TextFieldMasking extends TextField {
     
     @Override
     public String renderTemplate(FormData formData, Map dataModel) {
-        String template = "textFieldMasking.ftl";
-
         // set value
         String value = FormUtil.getElementPropertyValue(this, formData);
         
@@ -41,11 +39,11 @@ public class TextFieldMasking extends TextField {
             }
             dataModel.put("valueLabel", valueLabel);
         }
-        dataModel.put("value", value);
         
+        dataModel.put("element", this);
+        dataModel.put("value", value);
 
-        String html = FormUtil.generateElementHtml(this, formData, template, dataModel);
-        return html;
+        return FormUtil.generateElementHtml(this, formData, "textFieldMasking.ftl", dataModel);
     }
 
     @Override
