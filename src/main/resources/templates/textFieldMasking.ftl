@@ -16,7 +16,7 @@
 
     <#if !(includeMetaData!) && element.properties.slots! != "" && element.properties.placeholder! != "" && !(request.getAttribute("org.joget.marketplace.TextFieldMasking")??)>
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
+            $(function(){
                 for (const el of document.querySelectorAll("input.masking_element[placeholder][data-slots]")) {
                     const pattern = el.getAttribute("placeholder"),
                         slots = new Set(el.dataset.slots || "_"),

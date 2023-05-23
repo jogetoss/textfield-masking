@@ -17,7 +17,7 @@ public class TextFieldMasking extends TextField {
 
     @Override
     public String getVersion() {
-        return "7.0.1";
+        return "7.0.2";
     }
 
     @Override
