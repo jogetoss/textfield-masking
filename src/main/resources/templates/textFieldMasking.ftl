@@ -16,8 +16,11 @@
 
     <#if !(includeMetaData!) && element.properties.slots! != "" && element.properties.placeholder! != "" && !(request.getAttribute("org.joget.marketplace.TextFieldMasking")??)>
         <script>
-            $(document).on("page_loaded", function() {
-                for (const el of document.querySelectorAll("input.masking_element[placeholder][data-slots]")) {
+            (function() {
+                function initMask(el) {
+                    if (!el || el.dataset.maskInitialized) return;
+                    el.dataset.maskInitialized = "true";
+
                     const pattern = el.getAttribute("placeholder"),
                         slots = new Set(el.dataset.slots || "_"),
                         prev = (j => Array.from(pattern, (c,i) => slots.has(c)? j=i+1: j))(0),
@@ -32,7 +35,7 @@
                         format = () => {
                             const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
                                 i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
-                                return i<0? prev[prev.length-1]: back? prev[i-1] || first: i;
+                                return i<0 ? prev[prev.length-1] : back ? prev[i-1] || first : i;
                             });
                             el.value = clean(el.value).join``;
                             el.setSelectionRange(i, j);
@@ -44,7 +47,18 @@
                     el.addEventListener("focus", format);
                     el.addEventListener("blur", () => el.value === pattern && (el.value=""));
                 }
-            });
+
+                function initAllMasks() {
+                    for (const el of document.querySelectorAll("input.masking_element[placeholder][data-slots]")) {
+                        initMask(el);
+                    }
+                }
+                initAllMasks();
+
+                $(document).on("page_loaded", function() {
+                    initAllMasks();
+                });
+            })();
         </script>
     </#if>
 
